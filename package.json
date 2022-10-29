@@ -1,0 +1,30 @@
+{
+  "name": "dreamland-api",
+  "version": "1.0.0",
+  "description": "Api for dreamland",
+  "main": "src/index.js",
+  "repository": "https://github.com/allenabraham777/dreamland-api.git",
+  "author": "Allen K Abraham",
+  "license": "ISC",
+  "private": false,
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/index.js",
+    "clean": "rm -rf output",
+    "build": "yarn run clean && babel ./src --out-dir output --copy-files",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/node": "^7.20.0",
+    "@babel/preset-env": "^7.19.4",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "nodemon": "^2.0.20"
+  }
+}
