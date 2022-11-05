@@ -1,7 +1,7 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "colors";
-import config from "./config";
+import config from "config";
 
 /**
  * Module dependencies.
