@@ -12,7 +12,7 @@ const addTokenToUser = asyncHandler(async (req, res) => {
 const getDayToken = asyncHandler(async (req, res) => {
   const { userId } = req.params;
   const { data } = await tokenService.getTokenFromUserOnCurrentDay(userId);
-  res.status(201).json({ message: "Token for current day", data });
+  res.status(200).json({ message: "Token for current day", data });
 });
 
 export default {

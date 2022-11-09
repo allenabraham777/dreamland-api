@@ -17,7 +17,7 @@ const getAccountbalance = asyncHandler(async (req, res) => {
     accountBalance: accountBalance.amountBalance,
     tokenBalance: tokenBalance.tokenBalance,
   };
-  res.status(201).json({ message: "Account balance till day", data });
+  res.status(200).json({ message: "Account balance till day", data });
 });
 
 export default {

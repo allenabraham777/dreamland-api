@@ -5,10 +5,10 @@ const moneyRoutes = (app) => {
    * @swagger
    * /api/amount/{userId}:
    *   get:
-   *     summary: Returns the history of DREAM tokens a user has won for the current day so far.
-   *     description: RAPI that returns the history of DREAM tokens a user has won for the current day so far.
+   *     summary: Returns the total amount a user has won for till yesterday so far.
+   *     description: API that returns the total amount a user has won for till yesterday so far.
    *     tags:
-   *       - Token
+   *       - Amount
    *     parameters:
    *       - in: path
    *         name: userId
@@ -19,16 +19,27 @@ const moneyRoutes = (app) => {
    *           type: integer
    *     responses:
    *       200:
-   *         description: Total token for the day for that user.
+   *         description: Total amount claimed till yesterday.
    *         content:
    *           application/json:
    *             schema:
    *               type: object
    *               properties:
-   *                 token:
-   *                   type: integer
-   *                   description: Total token.
-   *                   example: 0
+   *                 message:
+   *                   type: string
+   *                   description: Success Message.
+   *                   example: Account balance till day
+   *                 data:
+   *                   type: object
+   *                   properties:
+   *                     id:
+   *                       type: integer
+   *                       description: User id
+   *                       example: 101
+   *                     amountBalance:
+   *                       type: string
+   *                       description: Total USD claimed
+   *                       example: "0.00016"
    */
   app.get("/api/amount/:userId", amountController.getAccountbalance);
 };

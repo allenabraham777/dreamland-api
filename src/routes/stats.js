@@ -5,10 +5,10 @@ const statRoutes = (app) => {
    * @swagger
    * /api/stats/{userId}:
    *   get:
-   *     summary: Returns the history of DREAM tokens a user has won for the current day so far.
-   *     description: RAPI that returns the history of DREAM tokens a user has won for the current day so far.
+   *     summary: Returns the history of DREAM tokens a user has won for the current day so far and the total USD claimed.
+   *     description: API that returns the history of DREAM tokens a user has won for the current day so far and the total USD claimed.
    *     tags:
-   *       - Token
+   *       - Stats
    *     parameters:
    *       - in: path
    *         name: userId
@@ -19,16 +19,29 @@ const statRoutes = (app) => {
    *           type: integer
    *     responses:
    *       200:
-   *         description: Total token for the day for that user.
+   *         description: User stats.
    *         content:
    *           application/json:
    *             schema:
    *               type: object
    *               properties:
-   *                 token:
-   *                   type: integer
+   *                 message:
+   *                   type: string
    *                   description: Total token.
-   *                   example: 0
+   *                   example: Account balance till day
+   *                 data:
+   *                   type: object
+   *                   properties:
+   *                     id:
+   *                       type: integer
+   *                       exapmle: 101
+   *                     accountBalance:
+   *                       type: string
+   *                       example: 0.00016
+   *                     tokenBalance:
+   *                       type: string
+   *                       example: 0.0001
+   *
    */
   app.get("/api/stats/:userId", statsController.getAccountbalance);
 };

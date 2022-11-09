@@ -25,7 +25,7 @@ const tokenRoutes = (app) => {
    *                 description: The amount of token.
    *                 example: 0.001
    *     responses:
-   *       200:
+   *       201:
    *         description: Success message.
    *         content:
    *           application/json:
@@ -46,6 +46,15 @@ const tokenRoutes = (app) => {
    *                       type: number
    *                       description: The amount of token.
    *                       example: 0.001
+   *                     credit:
+   *                       type: number
+   *                       example: 101
+   *                     debit:
+   *                       type: number
+   *                       example: 102
+   *                     description:
+   *                       type: string
+   *                       example: Game winner token of 0.001.......
    */
   app.post(
     "/api/token",
@@ -58,7 +67,7 @@ const tokenRoutes = (app) => {
    * /api/token/{userId}:
    *   get:
    *     summary: Returns the history of DREAM tokens a user has won for the current day so far.
-   *     description: RAPI that returns the history of DREAM tokens a user has won for the current day so far.
+   *     description: API that returns the history of DREAM tokens a user has won for the current day so far.
    *     tags:
    *       - Token
    *     parameters:
@@ -77,10 +86,21 @@ const tokenRoutes = (app) => {
    *             schema:
    *               type: object
    *               properties:
-   *                 token:
-   *                   type: integer
-   *                   description: Total token.
-   *                   example: 0
+   *                 message:
+   *                   type: string
+   *                   example: Token for current day
+   *                 data:
+   *                   type: array
+   *                   items:
+   *                     type: object
+   *                     properties:
+   *                       token:
+   *                         type: string
+   *                         example: 0.001
+   *                       time:
+   *                         type: string
+   *                         example: 2022-11-09T12:27:32.615Z
+   *
    */
   app.get("/api/token/:userId", tokenController.getDayToken);
 };
