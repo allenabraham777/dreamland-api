@@ -1,7 +1,5 @@
-import { config as envConfig } from "dotenv";
-envConfig();
-
-import db from "./db";
+require("dotenv").config();
+const db = require("./db");
 
 const env = process.env.NODE_ENV || "development";
 
@@ -13,4 +11,4 @@ const config = {
   db: db[env],
 };
 
-export default config;
+module.exports = config;
