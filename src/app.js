@@ -4,7 +4,7 @@ import createError from "http-errors";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import connectDB from "database/connection";
-import { tokenRoutes } from "routes";
+import { tokenRoutes, moneyRoutes, statsRoutes } from "routes";
 import { errorHandler } from "middlewares";
 import { convertTokenToUSD } from "jobs";
 
@@ -36,6 +36,8 @@ app.use(logger("dev"));
 app.use(express.json());
 
 tokenRoutes(app);
+moneyRoutes(app);
+statsRoutes(app);
 
 app.use(
   "/docs",

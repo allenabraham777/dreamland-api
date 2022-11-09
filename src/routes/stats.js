@@ -1,9 +1,9 @@
-import { amountController } from "controllers";
+import { statsController } from "controllers";
 
-const moneyRoutes = (app) => {
+const statRoutes = (app) => {
   /**
    * @swagger
-   * /api/amount/{userId}:
+   * /api/stats/{userId}:
    *   get:
    *     summary: Returns the history of DREAM tokens a user has won for the current day so far.
    *     description: RAPI that returns the history of DREAM tokens a user has won for the current day so far.
@@ -30,7 +30,7 @@ const moneyRoutes = (app) => {
    *                   description: Total token.
    *                   example: 0
    */
-  app.get("/api/amount/:userId", amountController.getAccountbalance);
+  app.get("/api/stats/:userId", statsController.getAccountbalance);
 };
 
-export default moneyRoutes;
+export default statRoutes;

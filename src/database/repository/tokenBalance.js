@@ -21,6 +21,15 @@ class TokenBalanceRepository {
       transaction,
     });
   }
+
+  getTokenBalanceOfUser(id) {
+    return this.model.findOne({
+      where: {
+        id,
+      },
+      attributes: ["id", "tokenBalance"],
+    });
+  }
 }
 
 export default TokenBalanceRepository;

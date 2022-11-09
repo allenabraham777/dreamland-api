@@ -15,7 +15,7 @@ AmountBalance.init(
     },
     amountBalance: {
       type: DataTypes.NUMBER,
-      field: "account_balance",
+      field: "amount_balance",
     },
   },
   {

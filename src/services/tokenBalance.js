@@ -22,6 +22,15 @@ class TokenBalanceService {
       throw error;
     }
   }
+
+  async getTotalTokenBalanceOfUser(userId) {
+    try {
+      const tokenBalance = await this.repository.getTokenBalanceOfUser(userId);
+      return formatData(tokenBalance);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default TokenBalanceService;
