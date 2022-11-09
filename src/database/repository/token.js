@@ -1,40 +1,35 @@
 import { Op } from "sequelize";
 import { throwError } from "utils";
-import { TokenTransaction } from "../models";
+import { TokenEntry } from "models";
 
 class TokenRepository {
   constructor() {
-    this.model = TokenTransaction;
+    this.model = TokenEntry;
   }
 
-  addTokenToUser(user, token, transaction) {
+  addTokenToUser(debit, credit, token, description, transaction) {
     if (!transaction) {
       throwError(null, "Transaction is required");
     }
     const newToken = this.model.build({
-      user,
-      credit: token,
-      amount: token,
+      token,
+      credit,
+      debit,
+      description,
     });
     return newToken.save({ transaction });
   }
 
-  getTokenFromUser(user, from, to) {
-    return TokenTransaction.findAll({
+  getTokenFromUser(credit, from, to) {
+    return this.model.findAll({
       where: {
-        user,
-        credit: {
-          [Op.gt]: 0,
-        },
+        credit,
         createdAt: {
           [Op.gte]: from,
           [Op.lt]: to,
         },
       },
-      attributes: [
-        ["credit", "token"],
-        ["createdAt", "time"],
-      ],
+      attributes: ["token", ["createdAt", "time"]],
     });
   }
 }

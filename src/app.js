@@ -6,6 +6,7 @@ import swaggerUi from "swagger-ui-express";
 import connectDB from "database/connection";
 import { tokenRoutes } from "routes";
 import { errorHandler } from "middlewares";
+import { convertTokenToUSD } from "jobs";
 
 const options = {
   definition: {
@@ -29,6 +30,7 @@ const swaggerSpec = swaggerJsdoc(options);
 const app = express();
 
 connectDB();
+convertTokenToUSD();
 
 app.use(logger("dev"));
 app.use(express.json());

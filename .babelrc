@@ -10,11 +10,14 @@
         "controllers": "./src/controllers",
         "services": "./src/services",
         "database": "./src/database",
+        "connection": "./src/database/connection",
         "models": "./src/database/models",
         "repository": "./src/database/repository",
         "utils": "./src/utils",
         "middlewares": "./src/middlewares",
-        "validators": "./src/middlewares/validators"
+        "validators": "./src/middlewares/validators",
+        "jobs": "./src/jobs",
+        "constants": "./src/constants"
       }
     }]
   ]
